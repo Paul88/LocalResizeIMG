@@ -30,11 +30,11 @@
             img.src = blob;
 
             img.onload = function () {
-                var _this = this;
+                var that = this;
 
                 //生成比例
-                var w = _this.width,
-                    h = _this.height,
+                var w = that.width,
+                    h = that.height,
                     scale = w / h;
                 w = obj.width || w;
                 h = w / scale;
@@ -43,7 +43,7 @@
                 var canvas = document.createElement('canvas');
                 var ctx = canvas.getContext('2d');
                 $(canvas).attr({width : w, height : h});
-                ctx.drawImage(_this, 0, 0, w, h);
+                ctx.drawImage(that, 0, 0, w, h);
 
                 /**
                  * 生成base64
@@ -83,7 +83,7 @@
     $('input:file').localResizeIMG({
         width: 100,
         quality: 0.1,
-        //before: function (_this, blob) {},
+        //before: function (that, blob) {},
         success: function (result) {
             var img = new Image();
             img.src = result.base64;
